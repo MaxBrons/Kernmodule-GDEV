@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kernmodule-GDEV", "Kernmodule-GDEV.vcxproj", "{61D77222-549F-49F5-91A2-4787B4E85D31}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Core\Core.vcxproj", "{AC630EB2-3959-4490-9140-27E071C144DB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D} = {B254B3FD-A197-40A5-AC5E-61A3E630382D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SFML", "Core\Vendor\SFML\SFML.vcxproj", "{B254B3FD-A197-40A5-AC5E-61A3E630382D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{CBC637DD-E2E3-4E6B-BE6A-9458916BDAD8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kernmodule-Game", "Kernmodule-Game\Kernmodule-Game.vcxproj", "{E27E528F-4479-4C64-9896-9FC86217F3A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AC630EB2-3959-4490-9140-27E071C144DB} = {AC630EB2-3959-4490-9140-27E071C144DB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +25,36 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Debug|x64.ActiveCfg = Debug|x64
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Debug|x64.Build.0 = Debug|x64
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Debug|x86.ActiveCfg = Debug|Win32
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Debug|x86.Build.0 = Debug|Win32
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Release|x64.ActiveCfg = Release|x64
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Release|x64.Build.0 = Release|x64
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Release|x86.ActiveCfg = Release|Win32
-		{61D77222-549F-49F5-91A2-4787B4E85D31}.Release|x86.Build.0 = Release|Win32
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Debug|x64.ActiveCfg = Debug|x64
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Debug|x64.Build.0 = Debug|x64
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Debug|x86.ActiveCfg = Debug|Win32
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Debug|x86.Build.0 = Debug|Win32
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Release|x64.ActiveCfg = Release|x64
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Release|x64.Build.0 = Release|x64
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Release|x86.ActiveCfg = Release|Win32
+		{AC630EB2-3959-4490-9140-27E071C144DB}.Release|x86.Build.0 = Release|Win32
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Debug|x64.ActiveCfg = Debug|x64
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Debug|x64.Build.0 = Debug|x64
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Debug|x86.ActiveCfg = Debug|Win32
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Debug|x86.Build.0 = Debug|Win32
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Release|x64.ActiveCfg = Release|x64
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Release|x64.Build.0 = Release|x64
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Release|x86.ActiveCfg = Release|Win32
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D}.Release|x86.Build.0 = Release|Win32
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Debug|x64.ActiveCfg = Debug|x64
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Debug|x64.Build.0 = Debug|x64
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Debug|x86.ActiveCfg = Debug|Win32
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Debug|x86.Build.0 = Debug|Win32
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Release|x64.ActiveCfg = Release|x64
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Release|x64.Build.0 = Release|x64
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Release|x86.ActiveCfg = Release|Win32
+		{E27E528F-4479-4C64-9896-9FC86217F3A3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B254B3FD-A197-40A5-AC5E-61A3E630382D} = {CBC637DD-E2E3-4E6B-BE6A-9458916BDAD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {08B479D6-CAD0-41AB-BFBC-DD107235616F}

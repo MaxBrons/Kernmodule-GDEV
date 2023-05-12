@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{61d77222-549f-49f5-91a2-4787b4e85d31}</ProjectGuid>
-    <RootNamespace>KernmoduleGDEV</RootNamespace>
+    <ProjectGuid>{b254b3fd-a197-40a5-ac5e-61a3e630382d}</ProjectGuid>
+    <RootNamespace>SFML</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Kernmodule-GDEV</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -113,7 +112,6 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>GDEV-Core/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
