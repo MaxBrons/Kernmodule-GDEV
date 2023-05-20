@@ -1,36 +1,39 @@
 #pragma once
+#include "Core.h"
+#include "Window.h"
 
-#ifndef KM_APPLICATION_H
-#define KM_APPLICATION_H
+namespace KMCore 
+{
+	struct ApplicationSettings 
+	{
+		std::string Title;
+		uint32_t Width, Height;
+		bool VSync;
 
-#include "Level.h"
-
-#include <SFML/Graphics.hpp>
-#include <vector>
-#include <string>
-
-namespace KMCore {
+		sf::Uint32 Style;
+		sf::ContextSettings ContextSettings;
+	};
 
 	class Application
 	{
 	public:
 		Application();
-		Application(sf::WindowHandle handle, const sf::ContextSettings& settings = sf::ContextSettings());
-		Application(sf::VideoMode mode, const sf::String& title, sf::Uint32 style = sf::Style::Default, const sf::ContextSettings& settings = sf::ContextSettings());
-		~Application() {}
+		Application(const WindowData& data);
 
-		void Run(const Level& level);
+		virtual ~Application() = default;
+
+		void Run();
 		void Quit();
 
-		inline sf::RenderWindow& GetWindow(){
-			return m_Window;
-		}
+		DefaultWindow& GetWindow() { return *m_Window; }
+		inline bool IsRunning() { return m_Running; }
 
 	private:
-		sf::RenderWindow m_Window;
-		KMCore::Level m_CurrentLevel;
-		bool m_Running = false;
-	};
+		DefaultWindow* m_Window;
+		ApplicationSettings m_ApplicationSettings;
+		bool m_Running = true;
 
+	private:
+		static Application* s_Instance;
+	};
 }
-#endif // !KM_APPLICATION_H
