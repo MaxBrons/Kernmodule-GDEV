@@ -8,26 +8,25 @@ namespace KMCore
 	Application::Application()
 	{
 		s_Instance = this;
-		m_Window = new DefaultWindow(WindowData());
+		m_Window = std::make_unique<DefaultWindow>();
 	}
 
 	Application::Application(const WindowData& data)
 	{
 		s_Instance = this;
-		m_Window = new DefaultWindow(WindowData(data));
+		m_Window = std::make_unique<DefaultWindow>(WindowData(data));
+	}
+
+	Application::~Application()
+	{
 	}
 
 	void Application::Run()
 	{
-		while (m_Running)
+		while (m_Window->IsOpen())
 		{
 			m_Window->Update();
 		}
-	}
-
-	void Application::Quit()
-	{
-		//_Window->Close();
-		//m_Window.reset();
+		m_Window = nullptr;
 	}
 }

@@ -20,20 +20,19 @@ namespace KMCore
 		Application();
 		Application(const WindowData& data);
 
-		virtual ~Application() = default;
+		virtual ~Application();
 
-		void Run();
-		void Quit();
+		virtual void Run();
 
-		DefaultWindow& GetWindow() { return *m_Window; }
-		inline bool IsRunning() { return m_Running; }
+		inline virtual DefaultWindow& GetWindow() { return *m_Window; }
+		inline virtual bool IsRunning() { return m_Running; }
 
+	public:
+		static Application* s_Instance;
 	private:
-		DefaultWindow* m_Window;
-		ApplicationSettings m_ApplicationSettings;
+		std::unique_ptr<DefaultWindow> m_Window;
+		std::unique_ptr<ApplicationSettings> m_ApplicationSettings;
 		bool m_Running = true;
 
-	private:
-		static Application* s_Instance;
 	};
 }

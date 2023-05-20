@@ -1,5 +1,5 @@
-#include "kmpch.h"
 #include "Core.h"
+#include "Core/Application.h"
 
 int main()
 {

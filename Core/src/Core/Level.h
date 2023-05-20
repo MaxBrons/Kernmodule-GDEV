@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 
 namespace KMCore {
 	class Level {
