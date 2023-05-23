@@ -18,35 +18,22 @@ namespace KMCore
 		}
 	};
 
-	class DefaultWindow
+	class Window
 	{
 	public:
-		DefaultWindow(const WindowData& data = WindowData());
-		virtual ~DefaultWindow();
+		virtual ~Window() = default;
 
-		virtual void Init(const WindowData& data);
-		virtual void Update();
-		virtual void PollEvent();
-		virtual void Close();
+		virtual void OnUpdate() = 0;;
 
-		inline virtual uint32_t GetWidth() const { return m_Data->VideoMode.width; };
-		inline virtual uint32_t GetHeight() const { return m_Data->VideoMode.height; }
+		virtual uint32_t GetWidth() const = 0;
+		virtual uint32_t GetHeight() const = 0;
 
-		inline virtual bool GetVSync() const { return m_Data->VSync; }
-		inline virtual void SetVSync(bool enabled) {
-			m_Data->VSync = enabled;
-			m_Window->setVerticalSyncEnabled(enabled);
-		}
+		virtual void SetVSync(bool enabled) = 0;
+		virtual bool IsVSyncEnabled() const = 0;
 
-		inline void* GetWindow() const { return m_Window.get(); }
-		inline bool IsOpen() const { return m_IsOpen; }
+		virtual sf::RenderWindow* GetRenderWindow() const = 0;
 
-		static DefaultWindow* Create(const WindowData& settings = WindowData()) { return new DefaultWindow(settings); }
-	private:
-		std::unique_ptr<sf::RenderWindow> m_Window;
-		std::vector<sf::Drawable*> m_SceneObjects;
-		std::unique_ptr<WindowData> m_Data;
-		bool m_IsOpen = true;
+		static Window* Create(const WindowData& settings = WindowData());
 	};
 }
 
