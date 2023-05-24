@@ -1,6 +1,6 @@
 #pragma once
-#include "Core/Window.h"
-#include "Core/Level.h"
+#include "KMCore/Core/Window.h"
+#include "KMCore/Core/Level.h"
 
 namespace KMCore
 {

@@ -1,7 +1,8 @@
 #pragma once
 #include "Core.h"
-#include "GameWindow.h"
+#include "Game/GameWindow.h"
 #include "Level.h"
+#include "Time.h"
 
 namespace KMCore
 {

@@ -1,7 +1,6 @@
 #pragma once
-#include "Core/Core.h"
-#include "Core/Application.h"
-#include "Core/Level.h"
+#include "KMCore.h"
+#include "KMCore/Core/Level.h"
 
 using namespace KMCore;
 class SpeedRacerLevel : public Level

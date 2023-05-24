@@ -19,16 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Application.h" />
-    <ClInclude Include="src\Core\Level.h" />
-    <ClInclude Include="src\Core\Core.h" />
-    <ClInclude Include="src\GameWindow.h" />
+    <ClInclude Include="src\KMCore\Core\Application.h" />
+    <ClInclude Include="src\KMCore\Core\Core.h" />
+    <ClInclude Include="src\KMCore\Core\Level.h" />
+    <ClInclude Include="src\KMCore.h" />
+    <ClInclude Include="src\Game\GameWindow.h" />
     <ClInclude Include="src\kmpch.h" />
-    <ClInclude Include="src\Core\Window.h" />
+    <ClInclude Include="src\KMCore\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\Application.cpp" />
-    <ClCompile Include="src\GameWindow.cpp" />
+    <ClCompile Include="src\KMCore\Core\Application.cpp" />
+    <ClCompile Include="src\Game\GameWindow.cpp" />
     <ClCompile Include="src\kmpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

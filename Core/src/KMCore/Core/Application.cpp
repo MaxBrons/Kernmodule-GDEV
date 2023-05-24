@@ -69,6 +69,9 @@ namespace KMCore
 	{
 		sf::Time timeStep = clock.getElapsedTime() - m_LastFrameTime;
 		m_LastFrameTime = timeStep;
+
+		KMCore::Time::time = clock.getElapsedTime().asSeconds();
+		KMCore::Time::deltaTime = m_LastFrameTime.asSeconds();
 		clock.restart();
 	}
 
