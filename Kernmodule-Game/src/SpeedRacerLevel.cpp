@@ -1,5 +1,6 @@
 #include "kmpch.h"
 #include "SpeedRacerLevel.h"
+#include "Time.h"
 
 using namespace sf;
 SpeedRacerLevel::SpeedRacerLevel(const std::string& name)
@@ -40,8 +41,40 @@ void SpeedRacerLevel::OnEvent(sf::Event& event)
 
 void SpeedRacerLevel::OnUpdate(sf::Time deltaTime)
 {
+	if (m_SpawnTimer >= m_SpawnDelay)
+	{
+		if (m_Enemies.size() < m_MaxEnemies)
+		{
+			Entity::Enemy* enemy = new Entity::Enemy();
+			sf::RectangleShape& shape = enemy->GetShape();
+			shape.setPosition(m_Window->getSize().x / 2.0f, m_Window->getSize().y / 2.0f);
+			shape.setFillColor(sf::Color::Green);
+			shape.setSize(sf::Vector2f(100.0f,100.0f));
+			m_Enemies.push_back(enemy);
+			m_SpawnTimer = 0.0f;
+		}
+	}
+	else
+	{
+		m_SpawnTimer += KMCore::Time::deltaTime;
+	}
+
 	m_Window->clear();
 	Draw(m_Player);
+	for (auto& enemy : m_Enemies)
+	{
+		enemy->GetShape().move(sf::Vector2f(0, 50.0f * KMCore::Time::deltaTime));
+		if (enemy->GetShape().getPosition().y > m_Window->getView().getSize().y)
+		{
+			auto& it = std::find(m_Enemies.begin(), m_Enemies.end(), enemy);
+			if (*it != nullptr)
+			{
+				m_Enemies.erase(it);
+			}
+		}
+
+		Draw(*enemy);
+	}
 	m_Window->display();
 }
 
