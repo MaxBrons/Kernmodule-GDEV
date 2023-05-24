@@ -34,14 +34,6 @@ namespace KMCore
 
 	void GameWindow::OnUpdate()
 	{
-		sf::Event event;
-		while (m_Window->pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				Shutdown();
-			if (event.KeyPressed == sf::Keyboard::Escape)
-				Shutdown();
-		}
 	}
 
 	void GameWindow::SetVSync(bool enabled)

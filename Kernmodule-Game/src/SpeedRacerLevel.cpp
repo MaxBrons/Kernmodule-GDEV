@@ -24,14 +24,17 @@ void SpeedRacerLevel::OnDestroy()
 
 void SpeedRacerLevel::OnEvent(sf::Event& event)
 {
-	Vector2f playerPos = m_Player.getPosition();
+	if (event.type == Event::MouseButtonPressed || 
+		event.type == Event::MouseButtonReleased)
+		return;
+
 	if (event.key.code == Keyboard::A)
 	{
-		m_Player.setPosition(playerPos + Vector2f(1.0f, 0.0f));
+		m_Player.move(Vector2f(-100.0f, 0.0f));
 	}
 	if (event.key.code == Keyboard::D)
 	{
-		m_Player.setPosition(playerPos + Vector2f(-1.0f, 0.0f));
+		m_Player.move(Vector2f(100.0f, 0.0f));
 	}
 }
 
