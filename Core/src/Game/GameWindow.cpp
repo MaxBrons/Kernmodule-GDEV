@@ -10,6 +10,7 @@ namespace KMCore
 	}
 
 	GameWindow::GameWindow(const WindowData& data)
+		:sf::RenderWindow(data.VideoMode, data.Title, data.Style, data.ContextSettings)
 	{
 		Init(data);
 	}
@@ -26,10 +27,8 @@ namespace KMCore
 		m_Data.Style = data.Style;
 		m_Data.ContextSettings = data.ContextSettings;
 
-		m_Window = new sf::RenderWindow(data.VideoMode, data.Title, data.Style, data.ContextSettings);
-
 		SetVSync(data.VSync);
-		m_Window->setActive();
+		setActive();
 	}
 
 	void GameWindow::OnUpdate()
@@ -39,7 +38,7 @@ namespace KMCore
 	void GameWindow::SetVSync(bool enabled)
 	{
 		m_Data.VSync = enabled;
-		m_Window->setVerticalSyncEnabled(enabled);
+		setVerticalSyncEnabled(enabled);
 	}
 
 	bool GameWindow::IsVSyncEnabled() const
@@ -49,6 +48,6 @@ namespace KMCore
 
 	void GameWindow::Shutdown()
 	{
-		m_Window->close();
+		close();
 	}
 }

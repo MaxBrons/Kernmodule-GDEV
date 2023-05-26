@@ -31,7 +31,7 @@ namespace KMCore
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSyncEnabled() const = 0;
 
-		virtual sf::RenderWindow* GetRenderWindow() const = 0;
+		virtual sf::RenderWindow* GetRenderWindow() = 0;
 
 		static Window* Create(const WindowData& settings = WindowData());
 	};

@@ -5,7 +5,7 @@
 namespace KMCore
 {
 
-	class GameWindow : public Window
+	class GameWindow : public Window, public sf::RenderWindow
 	{
 	public:
 		GameWindow(const WindowData& data);
@@ -19,12 +19,11 @@ namespace KMCore
 		void SetVSync(bool enabled) override;
 		bool IsVSyncEnabled() const override;
 
-		inline virtual sf::RenderWindow* GetRenderWindow() const { return m_Window; }
+		inline virtual sf::RenderWindow* GetRenderWindow() { return this; }
 	private:
 		virtual void Init(const WindowData& props);
 		virtual void Shutdown();
 	private:
-		sf::RenderWindow* m_Window;
 		WindowData m_Data;
 	};
 }

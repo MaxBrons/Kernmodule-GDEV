@@ -13,12 +13,12 @@ namespace KMCore
 
 	void Application::Run()
 	{
-		sf::Clock clock;
+		//sf::Clock clock;
 		sf::RenderWindow* window = m_Window->GetRenderWindow();
 
 		while (window->isOpen())
 		{
-			UpdateDeltaTime(clock);
+			//UpdateDeltaTime(clock);
 			PollEvents();
 			UpdateLevels();
 
@@ -65,15 +65,17 @@ namespace KMCore
 		}
 	}
 
-	void Application::UpdateDeltaTime(sf::Clock& clock)
+	/*void Application::UpdateDeltaTime(sf::Clock& clock)
 	{
 		sf::Time timeStep = clock.getElapsedTime() - m_LastFrameTime;
+		std::cout << timeStep.asMilliseconds() << std::endl;
+
 		m_LastFrameTime = timeStep;
 
-		KMCore::Time::time = clock.getElapsedTime().asSeconds();
-		KMCore::Time::deltaTime = m_LastFrameTime.asSeconds();
+		KMCore::Time::time = clock.getElapsedTime().asMilliseconds();
+		KMCore::Time::deltaTime = m_LastFrameTime.asMilliseconds();
 		clock.restart();
-	}
+	}*/
 
 	void Application::AddLevel(Level* level)
 	{

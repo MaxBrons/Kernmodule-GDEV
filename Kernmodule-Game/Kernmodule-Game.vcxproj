@@ -169,6 +169,8 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Entities\Enemy.h" />
+    <ClInclude Include="src\Entities\Player.h" />
     <ClInclude Include="src\SpeedRacerLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

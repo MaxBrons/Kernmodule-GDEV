@@ -39,9 +39,6 @@
     <ClInclude Include="src\KMCore\Entity\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\KMCore\Entity\Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\KMCore\Core\Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -25,7 +25,6 @@
     <ClInclude Include="src\KMCore.h" />
     <ClInclude Include="src\Game\GameWindow.h" />
     <ClInclude Include="src\KMCore\Core\Time.h" />
-    <ClInclude Include="src\KMCore\Entity\Enemy.h" />
     <ClInclude Include="src\KMCore\Entity\Object.h" />
     <ClInclude Include="src\kmpch.h" />
     <ClInclude Include="src\KMCore\Core\Window.h" />
