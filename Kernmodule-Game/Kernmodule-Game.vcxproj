@@ -165,6 +165,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entities\Enemy.cpp" />
+    <ClCompile Include="src\Entities\Player.cpp" />
     <ClCompile Include="src\SpeedRacerLevel.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>

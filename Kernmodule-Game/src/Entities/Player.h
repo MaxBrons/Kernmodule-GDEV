@@ -1,41 +1,26 @@
 #pragma once
-#include "KMCore/Entity/Object.h"
+#include "KMCore.h"
+#include "KMCore/Entity/GameObject.h"
 
 namespace KMCore::Entity
 {
-	class Player : public Object, public sf::RectangleShape
+	class Player : public GameObject
 	{
 	public:
 		Player() = default;
-		virtual ~Player() = default;
+		Player(const std::string texturePath, const std::string& name = "Player");
+		virtual ~Player();
 
-		// Inherited via Object
-		virtual void OnStart() override {
+		virtual void OnStart() override;
+		virtual void OnUpdate() override;
 
-		};
-
-		virtual void OnUpdate() override {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && m_Velocity > -4.0f)
-			{
-				AccelerateX(-m_Acceleration);
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && m_Velocity < 4.0f)
-			{
-				AccelerateX(m_Acceleration);
-			}
-			move({ m_Velocity, 0.0f });
-		};
-
-		virtual void AccelerateX(float acceleration) {
-			if (m_Velocity < m_MaxVelocity) {
-				m_Velocity += acceleration;
-			}
-		}
+		virtual void AccelerateX(float acceleration);
 
 	private:
-		float m_Velocity = 0.0f;
+		sf::Vector2f m_Velocity = { 0.0f, 0.0f };
 		float m_MaxVelocity = 5.0f;
 		float m_Acceleration = 0.1f;
+
+		sf::RenderWindow* m_Window = nullptr;
 	};
 }

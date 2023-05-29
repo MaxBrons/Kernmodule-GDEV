@@ -1,38 +1,31 @@
 #pragma once
-#include "KMCore/Entity/Object.h"
+#include "KMCore.h"
+#include "KMCore/Entity/GameObject.h"
+#include "KMCoreUtilities.h"
+#include <iostream>
 
 namespace KMCore::Entity
 {
-	class Enemy : public Object, public sf::RectangleShape
+	class Enemy : public GameObject
 	{
 	public:
-		Enemy() = default;
+		Enemy(const std::string texturePath, const std::string& name = "New Enemy");
 		virtual ~Enemy() = default;
 
-		// Inherited via Object
-		virtual void OnStart() override {
-			m_Window = Application::Get().GetWindow().GetRenderWindow();
-		};
+		virtual void OnStart() override;
+		virtual void OnUpdate() override;
 
-		virtual void OnUpdate() override {
-			AccelerateX(
-				//static_cast<float>(rand() & static_cast<int>(2) - 1));
-				0.1f
-			);
-			move({ m_Velocity, 0.0f });
-		};
+		virtual void Accelerate(float accelerationX, float accelerationY);
 
-		virtual void AccelerateX(float acceleration) {
-			if (m_Velocity < m_MaxVelocity) {
-				m_Velocity += acceleration;
-			}
+		inline float GetRandomValue(float maxValue)
+		{
+			return (rand() & static_cast<int>(maxValue * 100)) / 100.0f;
 		}
 
-	private:
-		float m_Velocity = 0.0f;
-		float m_MaxVelocity = 5.0f;
-		float m_Acceleration = 0.1f;
+		float MaxMovementSpeed = 5.0f;
 
-		sf::RenderWindow* m_Window;
+	private:
+		sf::Vector2f m_Velocity = { 0.0f, 0.0f };
+		float m_Acceleration = 0.1f;
 	};
 }

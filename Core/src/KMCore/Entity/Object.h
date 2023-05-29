@@ -1,13 +1,14 @@
 #pragma once
 #include "KMCore/Core/Core.h"
 
+#define BASE(x) __super::x()
 namespace KMCore::Entity
 {
 	class Object
 	{
 	public:
 		Object() = default;
-		Object(const std::string& name)
+		Object(const std::string& name = "New Object")
 			: m_Name(name){ }
 		virtual ~Object() = default;
 		
@@ -17,7 +18,7 @@ namespace KMCore::Entity
 
 		bool enabled = true;
 
-	private:
+	protected:
 		std::string m_Name;
 	};
 }

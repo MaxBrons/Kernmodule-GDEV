@@ -5,7 +5,7 @@ class SpeedRacer : public Application
 {
 public:
 	SpeedRacer()
-		:Application({ "Speed Racer", sf::VideoMode::getDesktopMode()})
+		:Application({ "Speed Racer", sf::VideoMode({720, 360})})
 	{
 		srand(static_cast<unsigned>(time(NULL)));
 		AddLevel(new SpeedRacerLevel());

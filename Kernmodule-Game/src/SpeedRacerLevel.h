@@ -2,15 +2,19 @@
 #include "KMCore.h"
 #include "KMCore/Core/Level.h"
 #include "KMCore/Core/Time.h"
-#include "Entities/Player.h"
+#include "KMCoreUtilities.h"
+#include "KMCore/UI/UIText.h"
 #include "Entities/Enemy.h"
+#include "Entities/Player.h"
+
+#include <sstream>
 #include <ctime>
 
 using namespace KMCore;
 class SpeedRacerLevel : public Level
 {
 public:
-	SpeedRacerLevel(const std::string& name = "New Level");
+	SpeedRacerLevel();
 	virtual ~SpeedRacerLevel() = default;
 
 	virtual void OnStart() override;
@@ -18,24 +22,27 @@ public:
 	virtual void OnEvent(sf::Event& event) override;
 	virtual void OnUpdate(sf::Time deltaTime) override;
 
+	void UpdateUI();
 	void UpdateEnemies();
-
-	void MovePlayer();
 	void SpawnEnemy();
-
-	virtual void Draw(sf::Shape& shape);
-
-private:
-	void DrawEnemies();
+	void CheckCollision();
+	void DrawScene();
 
 private:
-	GameWindow* m_Window;
-	std::string m_Name;
+	GameWindow* m_Window = nullptr;
 
-	Entity::Player m_Player;
-	std::vector<Entity::Enemy> m_Enemies = std::vector<Entity::Enemy>();
+	Entity::GameObject* m_Background = nullptr;
+	Entity::Player* m_Player = nullptr;
+	std::vector<Entity::Enemy*> m_Enemies;
+	
+	UI::UIText* m_ScoreText = nullptr;
+	UI::UIText* m_EndScreenText = nullptr;
+	Entity::GameObject* m_EndScreenBG = nullptr;
+	bool m_Collided = false;
+
+	int m_Score = 0;
 
 	float m_SpawnTimer = 0.0f;
-	float m_SpawnDelay = 1.0f;
+	float m_SpawnDelay = 2.0f;
 };
 

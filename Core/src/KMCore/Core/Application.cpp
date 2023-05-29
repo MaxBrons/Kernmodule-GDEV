@@ -13,10 +13,7 @@ namespace KMCore
 
 	void Application::Run()
 	{
-		//sf::Clock clock;
-		sf::RenderWindow* window = m_Window->GetRenderWindow();
-
-		while (window->isOpen())
+		while (m_Window->isOpen())
 		{
 			//UpdateDeltaTime(clock);
 			PollEvents();
@@ -30,13 +27,13 @@ namespace KMCore
 	{
 		if (event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
 		{
-			m_Window->GetRenderWindow()->close();
+			m_Window->close();
 			m_Running = false;
 		}
 
-		for (auto it = m_Levels.begin(); it != m_Levels.end(); it++)
+		for (int i = 0; i < m_Levels.size(); i++)
 		{
-			(*it)->OnEvent(event);
+			m_Levels[i]->OnEvent(event);
 		}
 
 		if (!m_Running)
@@ -59,7 +56,7 @@ namespace KMCore
 	void Application::PollEvents()
 	{
 		sf::Event event;
-		while (m_Window->GetRenderWindow()->pollEvent(event))
+		while (m_Window->pollEvent(event))
 		{
 			OnEvent(event);
 		}
@@ -79,7 +76,7 @@ namespace KMCore
 
 	void Application::AddLevel(Level* level)
 	{
-		m_Levels.push_back(level);
+		m_Levels.emplace_back(level);
 		level->OnStart();
 	}
 
