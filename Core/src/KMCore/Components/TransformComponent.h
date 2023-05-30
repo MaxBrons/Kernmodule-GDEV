@@ -6,12 +6,12 @@ namespace KMCore::Core
 	struct Transform
 	{
 	public:
-		sf::Vector2f position;
+		Vector2 position;
 		float		 rotation;
-		sf::Vector2f size;
-		sf::Vector2f scale;
+		Vector2 size;
+		Vector2 scale;
 
-		Transform(sf::Vector2f position = sf::Vector2f(), float rotation = 0.0f, sf::Vector2f size = sf::Vector2f(), sf::Vector2f scale = sf::Vector2f(1.0f, 1.0f))
+		Transform(Vector2 position = Vector2(), float rotation = 0.0f, Vector2 size = Vector2(), Vector2 scale = Vector2(1.0f, 1.0f))
 			: position(position), rotation(rotation), size(size), scale(scale)
 		{
 		}
@@ -24,7 +24,7 @@ namespace KMCore::Core
 		{
 			m_Shape = shape;
 		}
-		TransformComponent(sf::RectangleShape* shape, sf::Vector2f position, float rotation, sf::Vector2f size, sf::Vector2f scale = sf::Vector2f(1.0f, 1.0f))
+		TransformComponent(sf::RectangleShape* shape, Vector2 position, float rotation, Vector2 size, Vector2 scale = Vector2(1.0f, 1.0f))
 		{
 			m_Shape = shape;
 			SetPosition(position.x, position.y);
@@ -46,16 +46,18 @@ namespace KMCore::Core
 		const inline void Move(float x, float y) { m_Shape->move({ x, y }); }
 
 		const inline void SetPosition(float x, float y) { m_Shape->setPosition({ x, y }); }
-		const inline sf::Vector2f GetPosition() const { return m_Shape->getPosition(); }
+		const inline Vector2 GetPosition() const { return { m_Shape->getPosition().x, m_Shape->getPosition().y }; }
 
 		const inline void SetRotation(float rotation) { m_Shape->setRotation(rotation); }
 		const inline float GetRotation() const { return m_Shape->getRotation(); }
 
 		const inline void SetSize(float x, float y) { m_Shape->setSize({ x, y }); }
-		const inline sf::Vector2f GetSize() const { return m_Shape->getSize(); }
+		const inline Vector2 GetSize() const { return { m_Shape->getSize().x, m_Shape->getSize().y };
+		}
 
 		const inline void SetScale(float x, float y) { m_Shape->setScale({ x, y }); }
-		const inline sf::Vector2f GetScale() const { return m_Shape->getScale(); }
+		const inline Vector2 GetScale() const { return { m_Shape->getScale().x, m_Shape->getScale().y };
+		}
 
 		bool enabled = true;
 

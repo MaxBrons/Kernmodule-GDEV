@@ -1,7 +1,9 @@
 #pragma once
-#include "KMCore.h"
+#include "KMCore/Core/Application.h"
 #include "KMCore/Entity/GameObject.h"
 #include "KMCoreUtilities.h"
+#include "KMCore/Components/ColliderComponent.h"
+
 #include <iostream>
 
 namespace KMCore::Entity
@@ -10,7 +12,7 @@ namespace KMCore::Entity
 	{
 	public:
 		Enemy(const std::string texturePath, const std::string& name = "New Enemy");
-		virtual ~Enemy() = default;
+		virtual ~Enemy();
 
 		virtual void OnStart() override;
 		virtual void OnUpdate() override;
@@ -24,8 +26,12 @@ namespace KMCore::Entity
 
 		float MaxMovementSpeed = 5.0f;
 
+		Core::ColliderComponent* collider = nullptr;
+
 	private:
-		sf::Vector2f m_Velocity = { 0.0f, 0.0f };
+		Vector2 m_Velocity = { 0.0f, 0.0f };
 		float m_Acceleration = 0.1f;
+
+		Core::ColliderComponent* m_Collider = nullptr;
 	};
 }

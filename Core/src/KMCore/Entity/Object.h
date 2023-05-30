@@ -1,7 +1,7 @@
 #pragma once
 #include "KMCore/Core/Core.h"
 
-#define BASE(x) __super::x()
+#define BASE(x) __super::x
 namespace KMCore::Entity
 {
 	class Object

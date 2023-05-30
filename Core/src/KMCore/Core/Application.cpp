@@ -17,7 +17,10 @@ namespace KMCore
 		{
 			//UpdateDeltaTime(clock);
 			PollEvents();
+
+			m_Window->clear();
 			UpdateLevels();
+			m_Window->display();
 
 			m_Window->OnUpdate();
 		}

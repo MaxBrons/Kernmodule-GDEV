@@ -43,6 +43,6 @@ private:
 	int m_Score = 0;
 
 	float m_SpawnTimer = 0.0f;
-	float m_SpawnDelay = 2.0f;
+	float m_SpawnDelay = 1.0f;
 };
 

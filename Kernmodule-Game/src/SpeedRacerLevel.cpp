@@ -8,7 +8,7 @@ SpeedRacerLevel::SpeedRacerLevel()
 
 void SpeedRacerLevel::OnStart()
 {
-	m_EndScreenBG = new Entity::GameObject(std::string(), Core::Transform({}, 0.0f, (sf::Vector2f)m_Window->getSize()));
+	m_EndScreenBG = new Entity::GameObject(std::string(), Core::Transform({}, 0.0f, (Vector2)m_Window->getSize()));
 	m_EndScreenBG->GetShape()->setFillColor(sf::Color(0,0,0, 150));
 
 	m_EndScreenText = new UI::UIText("assets/Fonts/Roboto-Black.ttf", "Oh no.. you crashed!\nYou're total score is: ");
@@ -26,8 +26,6 @@ void SpeedRacerLevel::OnStart()
 
 	m_Player = new Entity::Player("assets/Sprites/cars_racer_blue.png");
 	m_Player->OnStart();
-
-	//TO-DO: USE FRICTION FOR PLAYER MOVEMENT
 
 	m_SpawnTimer = 1000.0f;
 	SpawnEnemy();
@@ -94,7 +92,6 @@ void SpeedRacerLevel::UpdateUI()
 
 void SpeedRacerLevel::DrawScene()
 {
-	m_Window->clear();
 	m_Background->Draw(m_Window);
 	m_Player->Draw(m_Window);
 
@@ -108,22 +105,15 @@ void SpeedRacerLevel::DrawScene()
 	}
 	else
 		m_Window->draw(*m_ScoreText);
-
-	m_Window->display();
 }
 
 void SpeedRacerLevel::CheckCollision()
 {
 	for (auto& e : m_Enemies)
 	{
-		float difY = m_Player->transform->GetPosition().y - e->transform->GetPosition().y;
-		float difX = m_Player->transform->GetPosition().x - e->transform->GetPosition().x;
-		if (difY > -e->transform->GetSize().y * 0.8f && difY < e->transform->GetSize().y * 0.8f)
+		if (m_Player->collider->IsColliding(*e->collider))
 		{
-			if (difX > -m_Player->transform->GetSize().x * 0.8f && difX < m_Player->transform->GetSize().x * 0.8f)
-			{
-				m_Collided = true;
-			}
+			m_Collided = true;
 		}
 	}
 }

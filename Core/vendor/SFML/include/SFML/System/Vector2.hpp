@@ -25,7 +25,7 @@
 #ifndef SFML_VECTOR2_HPP
 #define SFML_VECTOR2_HPP
 
-
+#include "KMCore/Core/Primitives.h"
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -68,6 +68,45 @@ public:
     ////////////////////////////////////////////////////////////
     template <typename U>
     explicit Vector2(const Vector2<U>& vector);
+
+    ///---------------------------------------------------------- <WARNING>
+   /// This operator is not part of the SFML library. 
+   /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
+   ///---------------------------------------------------------- </WARNING
+    template <typename U>
+    explicit Vector2(const KMCore::Vector2T<U>& vector)
+    {
+        x = vector.x;
+        y = vector.y;
+    }
+
+    ///---------------------------------------------------------- <WARNING>
+    /// This operator is not part of the SFML library. 
+    /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
+    ///---------------------------------------------------------- </WARNING
+    operator KMCore::Vector2T<float>() const
+    {
+        return { (float)x,(float)y };
+    }
+
+    ///---------------------------------------------------------- <WARNING>
+    /// This operator is not part of the SFML library. 
+    /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
+    ///---------------------------------------------------------- </WARNING
+    operator KMCore::Vector2T<int>() const
+    {
+        return { (int)x,(int)y };
+    }
+
+    ///---------------------------------------------------------- <WARNING>
+    /// This operator is not part of the SFML library. 
+    /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
+    ///---------------------------------------------------------- </WARNING
+    operator KMCore::Vector2T<unsigned int>() const
+    {
+        return { (unsigned int)x,(unsigned int)y };
+    }
+    
 
     ////////////////////////////////////////////////////////////
     // Member data

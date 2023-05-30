@@ -6,19 +6,27 @@ namespace KMCore::Entity
 	Enemy::Enemy(const std::string texturePath, const std::string& name)
 		:GameObject(texturePath, Core::Transform(), name)
 	{
+		m_Collider = new Core::ColliderComponent(transform);
+		collider = m_Collider;
 		OnStart();
+	}
+
+	Enemy::~Enemy()
+	{
+		collider = nullptr;
+		delete m_Collider;
 	}
 
 	void Enemy::OnStart()
 	{
-		BASE(OnStart);
-		sf::Vector2f size = (sf::Vector2f)GetTexture()->getSize();
+		BASE(OnStart());
+		Vector2 size = (Vector2)GetTexture()->getSize();
 		transform->SetSize(size.x / 4, size.y / 4);
 	}
 
 	void Enemy::OnUpdate()
 	{
-		BASE(OnUpdate);
+		BASE(OnUpdate());
 		transform->Move(m_Velocity.x, m_Velocity.y);
 	}
 

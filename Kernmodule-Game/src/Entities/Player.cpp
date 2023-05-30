@@ -6,25 +6,29 @@ namespace KMCore::Entity
 	Player::Player(const std::string texturePath, const std::string& name)
 		:GameObject(texturePath, Core::Transform(), name)
 	{
+		m_Collider = new Core::ColliderComponent(transform);
+		collider = m_Collider;
 	}
 
 	Player::~Player()
 	{
 		m_Window = nullptr;
+		collider = nullptr;
+		delete m_Collider;
 	}
 
 	void Player::OnStart()
 	{
-		BASE(OnStart);
+		BASE(OnStart());
 		m_Window = Application::Get().GetWindow().GetRenderWindow();
-		sf::Vector2f size = (sf::Vector2f)GetTexture()->getSize();
+		Vector2 size = GetTexture()->getSize();
 		transform->SetSize(size.x / 4, size.y / 4);
-		transform->SetPosition((m_Window->getSize().x / 2.0f) - transform->GetSize().x/2, m_Window->getSize().y - (transform->GetSize().y * 1.1f));
+		transform->SetPosition((m_Window->getSize().x / 2.0f) - transform->GetSize().x / 2, m_Window->getSize().y - (transform->GetSize().y * 1.1f));
 	};
 
 	void Player::OnUpdate()
 	{
-		BASE(OnUpdate);
+		BASE(OnUpdate());
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && m_Velocity.x > -4.0f)
 		{
 			AccelerateX(-m_Acceleration);

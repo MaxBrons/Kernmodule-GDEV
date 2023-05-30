@@ -57,6 +57,15 @@
     <ClInclude Include="src\KMCore\UI\UIText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\KMCore\Components\RigidBodyComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KMCore\Components\ColliderComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KMCore\Core\Primitives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\KMCore\Core\Application.cpp">
@@ -68,10 +77,10 @@
     <ClCompile Include="src\Game\GameWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\KMCore\Core\Time.cpp">
+    <ClCompile Include="src\KMCore\Math\KMMathf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\KMCore\Math\KMMathf.cpp">
+    <ClCompile Include="src\KMCore\Entity\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

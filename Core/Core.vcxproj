@@ -20,12 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\KMCoreUtilities.h" />
+    <ClInclude Include="src\KMCore\Components\ColliderComponent.h" />
+    <ClInclude Include="src\KMCore\Components\RigidBodyComponent.h" />
     <ClInclude Include="src\KMCore\Components\TransformComponent.h" />
     <ClInclude Include="src\KMCore\Core\Application.h" />
     <ClInclude Include="src\KMCore\Core\Core.h" />
     <ClInclude Include="src\KMCore\Core\Level.h" />
     <ClInclude Include="src\KMCore.h" />
     <ClInclude Include="src\Game\GameWindow.h" />
+    <ClInclude Include="src\KMCore\Core\Primitives.h" />
     <ClInclude Include="src\KMCore\Core\Time.h" />
     <ClInclude Include="src\KMCore\UI\UIText.h" />
     <ClInclude Include="src\KMCore\Entity\GameObject.h" />
@@ -37,7 +40,7 @@
   <ItemGroup>
     <ClCompile Include="src\KMCore\Core\Application.cpp" />
     <ClCompile Include="src\Game\GameWindow.cpp" />
-    <ClCompile Include="src\KMCore\Core\Time.cpp" />
+    <ClCompile Include="src\KMCore\Entity\GameObject.cpp" />
     <ClCompile Include="src\KMCore\Math\KMMathf.cpp" />
     <ClCompile Include="src\kmpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
