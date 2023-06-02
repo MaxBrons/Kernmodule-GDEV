@@ -3,7 +3,6 @@
 
 namespace KMCore
 {
-
 	Window* Window::Create(const WindowData& data)
 	{
 		return new GameWindow(data);

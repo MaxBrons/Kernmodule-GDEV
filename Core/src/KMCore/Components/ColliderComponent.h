@@ -1,10 +1,11 @@
 #pragma once
 #include "../Core/Core.h"
+#include "Component.h"
 #include "TransformComponent.h"
 
 namespace KMCore::Core
 {
-	class ColliderComponent
+	class ColliderComponent : public Component
 	{
 	public:
 		ColliderComponent() = default;
@@ -37,7 +38,6 @@ namespace KMCore::Core
 				m_Transform->GetPosition().y + m_Transform->GetSize().y - (m_Transform->GetSize().x * 0.1f)
 			);
 		}
-
 
 	private:
 		TransformComponent* m_Transform = nullptr;

@@ -4,44 +4,50 @@
 namespace KMCore::Entity
 {
 	Enemy::Enemy(const std::string texturePath, const std::string& name)
-		:GameObject(texturePath, Core::Transform(), name)
+		:Sprite(texturePath, Core::Transform(), name)
 	{
 		m_Collider = new Core::ColliderComponent(transform);
 		collider = m_Collider;
-		OnStart();
-	}
 
-	Enemy::~Enemy()
-	{
-		collider = nullptr;
-		delete m_Collider;
+		m_RigidBody = new Core::RigidBodyComponent(transform);
+		m_RigidBody->MinVelocity = 0.0f;
+
+		m_RandomXDir = GetRandomValue(1) >= 0.5f ? 1 : -1;
+
+		AddComponent(m_RigidBody);
+		AddComponent(m_Collider);
 	}
 
 	void Enemy::OnStart()
 	{
 		BASE(OnStart());
-		Vector2 size = (Vector2)GetTexture()->getSize();
-		transform->SetSize(size.x / 4, size.y / 4);
+
+		Vector2 size = (Vector2)GetTexture()->getSize() * Application::GlobalScaleMultiplier;
+		size /= 2.0f;
+
+		transform->SetSize(size.x, size.y);
 	}
 
 	void Enemy::OnUpdate()
 	{
 		BASE(OnUpdate());
-		transform->Move(m_Velocity.x, m_Velocity.y);
+		m_RigidBody->AddForce(Vector2(m_RandomXDir, 1));
+
+		if (((collider->GetBounds().x < m_MovementBounds.x) && m_RigidBody->Velocity.x < 0.0f) || ((collider->GetBounds().z > m_MovementBounds.z) && m_RigidBody->Velocity.x > 0.0f))
+		{
+			m_RigidBody->Velocity.x = 0.0f;
+			m_RandomXDir *= -1;
+		}
+
+		if (transform->GetPosition().y > m_MovementBounds.w)
+			enabled = false;
+
+		m_RigidBody->OnUpdate();
 	}
 
-	void Enemy::Accelerate(float accelerationX, float accelerationY)
+	void Enemy::OnDestroy()
 	{
-		if (m_Velocity.x < MaxMovementSpeed)
-		{
-			m_Velocity.x += accelerationX;
-			m_Velocity.x = KMMathf::clamp(m_Velocity.x, 0.0f, MaxMovementSpeed);
-		}
-
-		if (m_Velocity.y < MaxMovementSpeed)
-		{
-			m_Velocity.y += accelerationY;
-			m_Velocity.y = KMMathf::clamp(m_Velocity.y, 0.0f, MaxMovementSpeed);
-		}
+		BASE(OnDestroy());
+		delete m_Collider;
 	}
 }

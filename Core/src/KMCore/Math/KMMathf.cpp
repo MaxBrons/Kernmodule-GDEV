@@ -1,7 +1,7 @@
 #include "kmpch.h"
 #include "KMMathf.h"
 
-namespace KMCore::Mathf
+namespace KMCore::Math
 {
 	float KMMathf::abs(float value)
 	{

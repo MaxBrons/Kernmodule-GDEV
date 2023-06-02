@@ -1,6 +1,6 @@
 #pragma once
 
-namespace KMCore::Mathf
+namespace KMCore::Math
 {
 	static class KMMathf
 	{

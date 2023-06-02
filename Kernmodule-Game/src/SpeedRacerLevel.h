@@ -1,9 +1,11 @@
 #pragma once
 #include "KMCore.h"
+#include "KMCoreUtilities.h"
 #include "KMCore/Core/Level.h"
 #include "KMCore/Core/Time.h"
-#include "KMCoreUtilities.h"
 #include "KMCore/UI/UIText.h"
+#include "KMCore/Entity/Sprite.h"
+
 #include "Entities/Enemy.h"
 #include "Entities/Player.h"
 
@@ -22,9 +24,10 @@ public:
 	virtual void OnEvent(sf::Event& event) override;
 	virtual void OnUpdate(sf::Time deltaTime) override;
 
+	void SpawnEnemy();
 	void UpdateUI();
 	void UpdateEnemies();
-	void SpawnEnemy();
+	void UpdateBackground();
 	void CheckCollision();
 	void DrawScene();
 
@@ -32,7 +35,9 @@ private:
 	GameWindow* m_Window = nullptr;
 
 	Entity::GameObject* m_Background = nullptr;
+	Entity::GameObject* m_Background1 = nullptr;
 	Entity::Player* m_Player = nullptr;
+	Core::RigidBodyComponent* m_PlayerRigidBody = nullptr;
 	std::vector<Entity::Enemy*> m_Enemies;
 	
 	UI::UIText* m_ScoreText = nullptr;
@@ -43,6 +48,6 @@ private:
 	int m_Score = 0;
 
 	float m_SpawnTimer = 0.0f;
-	float m_SpawnDelay = 1.0f;
+	float m_SpawnDelay = 1.5f;
 };
 

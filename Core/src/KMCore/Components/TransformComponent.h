@@ -1,5 +1,6 @@
 #pragma once
 #include "KMCore/Core/Core.h"
+#include "Component.h"
 
 namespace KMCore::Core
 {
@@ -7,7 +8,7 @@ namespace KMCore::Core
 	{
 	public:
 		Vector2 position;
-		float		 rotation;
+		float	rotation;
 		Vector2 size;
 		Vector2 scale;
 
@@ -17,9 +18,10 @@ namespace KMCore::Core
 		}
 	};
 
-	class TransformComponent
+	class TransformComponent : public Component
 	{
 	public:
+		TransformComponent() = default;
 		TransformComponent(sf::RectangleShape* shape)
 		{
 			m_Shape = shape;
@@ -43,7 +45,7 @@ namespace KMCore::Core
 
 		virtual ~TransformComponent() = default;
 
-		const inline void Move(float x, float y) { m_Shape->move({ x, y }); }
+		const inline void Move(float x, float y) { m_Shape->move({ x,y }); }
 
 		const inline void SetPosition(float x, float y) { m_Shape->setPosition({ x, y }); }
 		const inline Vector2 GetPosition() const { return { m_Shape->getPosition().x, m_Shape->getPosition().y }; }
@@ -52,11 +54,15 @@ namespace KMCore::Core
 		const inline float GetRotation() const { return m_Shape->getRotation(); }
 
 		const inline void SetSize(float x, float y) { m_Shape->setSize({ x, y }); }
-		const inline Vector2 GetSize() const { return { m_Shape->getSize().x, m_Shape->getSize().y };
+		const inline Vector2 GetSize() const
+		{
+			return { m_Shape->getSize().x, m_Shape->getSize().y };
 		}
 
 		const inline void SetScale(float x, float y) { m_Shape->setScale({ x, y }); }
-		const inline Vector2 GetScale() const { return { m_Shape->getScale().x, m_Shape->getScale().y };
+		const inline Vector2 GetScale() const
+		{
+			return { m_Shape->getScale().x, m_Shape->getScale().y };
 		}
 
 		bool enabled = true;

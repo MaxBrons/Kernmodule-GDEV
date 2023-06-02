@@ -7,24 +7,48 @@ namespace KMCore
 	/// The primitive Vector2 class
 	/// </summary>
 	template<typename T>
-	class Vector2T
+	class Vector2x
 	{
 	public:
-		Vector2T()
+		Vector2x()
 			:x(0), y(0)
 		{
 		}
-		Vector2T(T X, T Y)
+		Vector2x(T X, T Y)
 			:x(X), y(Y)
 		{
 		}
 
+		static Vector2x<T> Clamp(Vector2x<T>& vector, T min, T max)
+		{
+			vector.x = vector.x < min ? min : vector.x > max ? max : vector.x;
+			vector.y = vector.y < min ? min : vector.y > max ? max : vector.y;
+			return vector;
+		}
+
+		static Vector2x<T> zero;
+		static Vector2x<T> left;
+		static Vector2x<T> right;
+		static Vector2x<T> up;
+		static Vector2x<T> down;
+
 		T x, y;
 	};
 
+	template<typename T>
+	Vector2x<T> Vector2x<T>::zero = Vector2x<T>();
+	template<typename T>
+	Vector2x<T> Vector2x<T>::left = Vector2x<T>(-1, 0);
+	template<typename T>
+	Vector2x<T> Vector2x<T>::right = Vector2x<T>(1, 0);
+	template<typename T>
+	Vector2x<T> Vector2x<T>::up = Vector2x<T>(0, -1);
+	template<typename T>
+	Vector2x<T> Vector2x<T>::down = Vector2x<T>(0, 1);
+
 
 	template <typename T>
-	inline Vector2T<T>& operator +=(Vector2T<T>& left, const Vector2T<T>& right)
+	inline Vector2x<T>& operator +=(Vector2x<T>& left, const Vector2x<T>& right)
 	{
 		left.x += right.x;
 		left.y += right.y;
@@ -33,7 +57,7 @@ namespace KMCore
 	}
 
 	template <typename T>
-	inline Vector2T<T>& operator -=(Vector2T<T>& left, const Vector2T<T>& right)
+	inline Vector2x<T>& operator -=(Vector2x<T>& left, const Vector2x<T>& right)
 	{
 		left.x -= right.x;
 		left.y -= right.y;
@@ -42,38 +66,88 @@ namespace KMCore
 	}
 
 	template <typename T>
-	inline Vector2T<T> operator +(const Vector2T<T>& left, const Vector2T<T>& right)
+	inline Vector2x<T>& operator *=(Vector2x<T>& left, const Vector2x<T>& right)
 	{
-		return Vector2T<T>(left.x + right.x, left.y + right.y);
+		left.x *= right.x;
+		left.y *= right.y;
+		return left;
 	}
 
 	template <typename T>
-	inline Vector2T<T> operator -(const Vector2T<T>& left, const Vector2T<T>& right)
+	inline Vector2x<T>& operator *=(Vector2x<T>& left, const T& right)
 	{
-		return Vector2T<T>(left.x - right.x, left.y - right.y);
+		left.x *= right;
+		left.y *= right;
+		return left;
 	}
 
 	template <typename T>
-	inline Vector2T<T> operator -(const Vector2T<T>& right)
+	inline Vector2x<T> operator *(const Vector2x<T>& left, const T& right)
 	{
-		return Vector2T<T>(-right.x, -right.y);
+		return Vector2x<T>(left.x * right, left.y * right);
 	}
 
 	template <typename T>
-	inline bool operator ==(const Vector2T<T>& left, const Vector2T<T>& right)
+	inline Vector2x<T>& operator /=(Vector2x<T>& left, const Vector2x<T>& right)
+	{
+		left.x /= right.x;
+		left.y /= right.y;
+		return left;
+	}
+
+	template <typename T>
+	inline Vector2x<T>& operator /=(Vector2x<T>& left, const T& right)
+	{
+		left.x /= right;
+		left.y /= right;
+		return left;
+	}
+
+	template <typename T>
+	inline Vector2x<T> operator /(const Vector2x<T>& left, const T& right)
+	{
+		return Vector2x<T>(left.x / right, left.y / right);
+	}
+
+	template <typename T>
+	inline Vector2x<T> operator /(const Vector2x<T>& left, const Vector2x<T>& right)
+	{
+		return Vector2x<T>(left.x / right.x, left.y / right.y);
+	}
+
+	template <typename T>
+	inline Vector2x<T> operator +(const Vector2x<T>& left, const Vector2x<T>& right)
+	{
+		return Vector2x<T>(left.x + right.x, left.y + right.y);
+	}
+
+	template <typename T>
+	inline Vector2x<T> operator -(const Vector2x<T>& left, const Vector2x<T>& right)
+	{
+		return Vector2x<T>(left.x - right.x, left.y - right.y);
+	}
+
+	template <typename T>
+	inline Vector2x<T> operator -(const Vector2x<T>& right)
+	{
+		return Vector2x<T>(-right.x, -right.y);
+	}
+
+	template <typename T>
+	inline bool operator ==(const Vector2x<T>& left, const Vector2x<T>& right)
 	{
 		return (left.x == right.x) && (left.y == right.y);
 	}
 
 	template <typename T>
-	inline bool operator !=(const Vector2T<T>& left, const Vector2T<T>& right)
+	inline bool operator !=(const Vector2x<T>& left, const Vector2x<T>& right)
 	{
 		return (left.x != right.x) || (left.y != right.y);
 	}
 
-	typedef Vector2T<float> Vector2;
-	typedef Vector2T<int> Vector2Int;
-	typedef Vector2T<unsigned int> Vector2u;
+	typedef Vector2x<float> Vector2;
+	typedef Vector2x<int> Vector2Int;
+	typedef Vector2x<unsigned int> Vector2u;
 
 
 	/// <summary>

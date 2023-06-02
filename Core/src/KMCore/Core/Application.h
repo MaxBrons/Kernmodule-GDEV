@@ -21,6 +21,8 @@ namespace KMCore
 
 		inline static Application& Get() { return *s_Instance; }
 
+		static float GlobalScaleMultiplier;
+
 	private:
 		virtual void PollEvents();
 		virtual void OnEvent(sf::Event& event);

@@ -74,7 +74,7 @@ public:
    /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
    ///---------------------------------------------------------- </WARNING
     template <typename U>
-    explicit Vector2(const KMCore::Vector2T<U>& vector)
+    explicit Vector2(const KMCore::Vector2x<U>& vector)
     {
         x = vector.x;
         y = vector.y;
@@ -84,7 +84,7 @@ public:
     /// This operator is not part of the SFML library. 
     /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
     ///---------------------------------------------------------- </WARNING
-    operator KMCore::Vector2T<float>() const
+    operator KMCore::Vector2x<float>() const
     {
         return { (float)x,(float)y };
     }
@@ -93,7 +93,7 @@ public:
     /// This operator is not part of the SFML library. 
     /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
     ///---------------------------------------------------------- </WARNING
-    operator KMCore::Vector2T<int>() const
+    operator KMCore::Vector2x<int>() const
     {
         return { (int)x,(int)y };
     }
@@ -102,7 +102,7 @@ public:
     /// This operator is not part of the SFML library. 
     /// This is a custom conversion operator for the KMCore Vector2 class to make calculating with SFML and KMCore easier.
     ///---------------------------------------------------------- </WARNING
-    operator KMCore::Vector2T<unsigned int>() const
+    operator KMCore::Vector2x<unsigned int>() const
     {
         return { (unsigned int)x,(unsigned int)y };
     }
