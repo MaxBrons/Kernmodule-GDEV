@@ -4,7 +4,6 @@
 
 namespace KMCore
 {
-
 	class GameWindow : public Window, public sf::RenderWindow
 	{
 	public:

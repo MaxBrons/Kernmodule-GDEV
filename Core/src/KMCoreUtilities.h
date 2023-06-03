@@ -10,7 +10,10 @@ using namespace KMCore::Math;
 #define LOG(x)
 #endif
 
+#define WINDOW_WIDTH_REF 1920.0f
+#define WINDOW_HEIGHT_REF 1080.0f
+
 static float GetRandomValue(float maxValue)
 {
-	return  static_cast<float>(rand() & static_cast<int>(maxValue * 100.0f)) / 10.0f;
+	return  static_cast<float>(rand() & static_cast<int>(maxValue * 100.0f)) / 100.0f;
 }

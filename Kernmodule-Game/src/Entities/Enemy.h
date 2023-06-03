@@ -7,9 +7,12 @@
 
 #include <iostream>
 
-namespace KMCore::Entity
+using namespace KMCore;
+using namespace KMCore::Entity;
+
+namespace KMGame::Entity
 {
-	class Enemy : public Sprite
+	class Enemy : public ::Sprite
 	{
 	public:
 		Enemy(const std::string texturePath, const std::string& name = "New Enemy");
@@ -18,11 +21,6 @@ namespace KMCore::Entity
 		virtual void OnStart() override;
 		virtual void OnUpdate() override;
 		virtual void OnDestroy() override;
-
-		inline float GetRandomValue(float maxValue)
-		{
-			return (rand() & static_cast<int>(maxValue * 100)) / 100.0f;
-		}
 
 		inline void SetMovementBounds(Vector4 bounds) { m_MovementBounds = bounds; }
 

@@ -1,20 +1,37 @@
 #include "KMCore/Core/Application.h"
-#include "SpeedRacerLevel.h"
+#include "Levels/MainMenuLevel.h"
 
-class SpeedRacer : public Application
+constexpr char*		     APP_TITLE = "Speed Racer";
+constexpr float		     APP_WIDTH = WINDOW_WIDTH_REF;
+constexpr float		    APP_HEIGHT = WINDOW_HEIGHT_REF;
+constexpr unsigned int   APP_STYLE = sf::Style::Default;
+constexpr bool APP_HAS_FRAME_LIMIT = true;
+constexpr int	   APP_FRAME_LIMIT = 60;								
+
+namespace KMGame
 {
-public:
-	SpeedRacer()
-		:Application(WindowData("Speed Racer", sf::VideoMode::getDesktopMode(), sf::Style::Fullscreen))
+	class SpeedRacer : public Application
 	{
-		srand(static_cast<unsigned>(time(NULL)));
-		AddLevel(new SpeedRacerLevel());
-	}
-};
+	public:
+		SpeedRacer()
+			:Application(WindowData(APP_TITLE, sf::VideoMode(WINDOW_WIDTH_REF, WINDOW_HEIGHT_REF), APP_STYLE))
+		{
+			srand(static_cast<unsigned>(time(NULL)));
+			AddLevel(new MainMenuLevel());
+			GetWindow().SetVSync(true);
+			
+			auto window = GetWindow().GetRenderWindow();
+			window->setMouseCursorVisible(false);
+
+			if (APP_HAS_FRAME_LIMIT)
+				window->setFramerateLimit(60);
+		}
+	};
+}
 
 int main()
 {
-	std::unique_ptr<SpeedRacer> application = std::make_unique<SpeedRacer>();
-	application->GetWindow().GetRenderWindow()->setFramerateLimit(60);
+	std::unique_ptr<KMGame::SpeedRacer> application = std::make_unique<KMGame::SpeedRacer>();
+	application->GetWindow().GetRenderWindow()->setFramerateLimit(APP_FRAME_LIMIT);
 	application->Run();
 }

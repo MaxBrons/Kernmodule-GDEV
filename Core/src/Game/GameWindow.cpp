@@ -25,7 +25,11 @@ namespace KMCore
 		m_Data.VideoMode = data.VideoMode;
 		m_Data.Style = data.Style;
 		m_Data.ContextSettings = data.ContextSettings;
-
+		if ((Vector2)GetRenderWindow()->getView().getSize() != Vector2(m_Data.VideoMode.width, m_Data.VideoMode.height))
+		{
+			Vector2 size = GetRenderWindow()->getView().getSize();
+			m_Data.VideoMode = sf::VideoMode(size.x, size.y);
+		}
 		SetVSync(data.VSync);
 		setActive();
 	}

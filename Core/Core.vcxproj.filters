@@ -72,6 +72,9 @@
     <ClInclude Include="src\KMCore\Components\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\KMCore\Interfaces\IMovable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\KMCore\Core\Application.cpp">

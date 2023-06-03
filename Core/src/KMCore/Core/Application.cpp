@@ -1,8 +1,9 @@
 #include "kmpch.h"
-#include "Application.h"
+#include "Application.h" 
 
 namespace KMCore
 {
+
 	Application* Application::s_Instance = nullptr;
 	float Application::GlobalScaleMultiplier = 1.0f;
 
@@ -10,7 +11,7 @@ namespace KMCore
 	{
 		s_Instance = this;
 		m_Window = std::make_unique<GameWindow>(data);
-		GlobalScaleMultiplier = 1.0f / 1920.0f * (float)m_Window->GetWidth();
+		GlobalScaleMultiplier = 1.0f / WINDOW_WIDTH_REF * (float)m_Window->GetWidth();
 	}
 
 	void Application::Run()
@@ -41,7 +42,7 @@ namespace KMCore
 			WindowData data = m_Window->GetWindowData();
 			data.VideoMode = sf::VideoMode(event.size.width, event.size.height);
 			m_Window->Init(data);
-			std::cout << event.size.width << " " << event.size.height << std::endl;
+			std::cout << "Window width: " << event.size.width << " " << "Window height: " << event.size.height << std::endl;
 		}
 
 		for (int i = 0; i < m_Levels.size(); i++)

@@ -3,6 +3,7 @@
 #include "Game/GameWindow.h"
 #include "Level.h"
 #include "Time.h"
+#include "KMCoreUtilities.h"
 
 namespace KMCore
 {
@@ -27,7 +28,7 @@ namespace KMCore
 		virtual void PollEvents();
 		virtual void OnEvent(sf::Event& event);
 
-		void UpdateDeltaTime(sf::Clock& clock);
+		//void UpdateDeltaTime(sf::Clock& clock);
 		void UpdateLevels();
 
 	private:

@@ -165,15 +165,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entities\Road.cpp" />
     <ClCompile Include="src\Entities\Enemy.cpp" />
     <ClCompile Include="src\Entities\Player.cpp" />
-    <ClCompile Include="src\SpeedRacerLevel.cpp" />
+    <ClCompile Include="src\Levels\MainMenuLevel.cpp" />
+    <ClCompile Include="src\Levels\SpeedRacerLevel.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Entities\Road.h" />
     <ClInclude Include="src\Entities\Enemy.h" />
     <ClInclude Include="src\Entities\Player.h" />
-    <ClInclude Include="src\SpeedRacerLevel.h" />
+    <ClInclude Include="src\Levels\MainMenuLevel.h" />
+    <ClInclude Include="src\Levels\SpeedRacerLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

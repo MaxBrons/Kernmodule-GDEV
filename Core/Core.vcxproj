@@ -32,6 +32,7 @@
     <ClInclude Include="src\KMCore\Core\Primitives.h" />
     <ClInclude Include="src\KMCore\Core\Time.h" />
     <ClInclude Include="src\KMCore\Entity\Sprite.h" />
+    <ClInclude Include="src\KMCore\Interfaces\IMovable.h" />
     <ClInclude Include="src\KMCore\UI\UIText.h" />
     <ClInclude Include="src\KMCore\Entity\GameObject.h" />
     <ClInclude Include="src\KMCore\Entity\Object.h" />

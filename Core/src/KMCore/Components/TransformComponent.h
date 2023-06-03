@@ -1,5 +1,6 @@
 #pragma once
 #include "KMCore/Core/Core.h"
+#include "KMCore/Core/Application.h"
 #include "Component.h"
 
 namespace KMCore::Core
@@ -31,7 +32,7 @@ namespace KMCore::Core
 			m_Shape = shape;
 			SetPosition(position.x, position.y);
 			SetRotation(rotation);
-			SetScale(size.x, size.y);
+			SetSize(size.x, size.y);
 			SetScale(scale.x, scale.y);
 		}
 		TransformComponent(sf::RectangleShape* shape, const Transform& transform)
@@ -45,25 +46,23 @@ namespace KMCore::Core
 
 		virtual ~TransformComponent() = default;
 
-		const inline void Move(float x, float y) { m_Shape->move({ x,y }); }
+		void OnStart() override {};
+		void OnUpdate() override {};
+		void OnDestroy() override {};
 
-		const inline void SetPosition(float x, float y) { m_Shape->setPosition({ x, y }); }
+		const inline void Move(float x, float y) { m_Shape->move(sf::Vector2f(x, y)); }
+
+		const inline void SetPosition(float x, float y) { m_Shape->setPosition(sf::Vector2f(x, y)); }
 		const inline Vector2 GetPosition() const { return { m_Shape->getPosition().x, m_Shape->getPosition().y }; }
 
 		const inline void SetRotation(float rotation) { m_Shape->setRotation(rotation); }
 		const inline float GetRotation() const { return m_Shape->getRotation(); }
 
-		const inline void SetSize(float x, float y) { m_Shape->setSize({ x, y }); }
-		const inline Vector2 GetSize() const
-		{
-			return { m_Shape->getSize().x, m_Shape->getSize().y };
-		}
+		const inline void SetSize(float x, float y) { m_Shape->setSize(sf::Vector2f(x, y)); }
+		const inline Vector2 GetSize() const { return { m_Shape->getSize().x, m_Shape->getSize().y }; }
 
-		const inline void SetScale(float x, float y) { m_Shape->setScale({ x, y }); }
-		const inline Vector2 GetScale() const
-		{
-			return { m_Shape->getScale().x, m_Shape->getScale().y };
-		}
+		const inline void SetScale(float x, float y) { m_Shape->setScale(sf::Vector2f(x, y) * Application::GlobalScaleMultiplier); }
+		const inline Vector2 GetScale() const { return { m_Shape->getScale().x, m_Shape->getScale().y }; }
 
 		bool enabled = true;
 

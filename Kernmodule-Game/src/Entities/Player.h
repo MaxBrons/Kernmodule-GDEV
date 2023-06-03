@@ -4,7 +4,10 @@
 #include "KMCore/Components/ColliderComponent.h"
 #include "KMCore/Components/RigidBodyComponent.h"
 
-namespace KMCore::Entity
+using namespace KMCore;
+using namespace KMCore::Entity;
+
+namespace KMGame::Entity
 {
 	class Player : public Sprite
 	{

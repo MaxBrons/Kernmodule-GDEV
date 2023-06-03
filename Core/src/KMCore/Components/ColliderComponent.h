@@ -15,6 +15,10 @@ namespace KMCore::Core
 		}
 		virtual ~ColliderComponent() = default;
 
+		void OnStart() override {};
+		void OnUpdate() override {};
+		void OnDestroy() override {};
+
 		bool IsColliding(const ColliderComponent& other)
 		{
 			bool left = GetBounds().x < other.GetBounds().z;
