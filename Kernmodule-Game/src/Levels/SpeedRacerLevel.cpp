@@ -163,7 +163,6 @@ namespace KMGame
 			enemy->SetMovementBounds(Vector4(offset, -windowSize.y, windowSize.x - offset, windowSize.y));
 			enemy->transform->SetPosition(newPosX, -enemy->transform->GetSize().y * 2);
 			enemy->SetSpeed(m_EnemyMovementSpeed * (float)(randIndex == 2 ? 2 : 1));
-			sf::RectangleShape s;
 
 			m_Enemies.push_back(enemy);
 			m_SpawnTimer = 0.0f;
