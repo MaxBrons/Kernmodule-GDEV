@@ -88,6 +88,18 @@ namespace KMCore
 	}
 
 	template <typename T>
+	inline Vector2x<T> operator *(const T& left, const Vector2x<T>& right)
+	{
+		return Vector2x<T>(left * right.x, left * right.y);
+	}
+
+	template <typename T>
+	inline Vector2x<T> operator *(const Vector2x<T>& left, const Vector2x<T>& right)
+	{
+		return Vector2x<T>(left.x * right.x, left.y * right.y);
+	}
+
+	template <typename T>
 	inline Vector2x<T>& operator /=(Vector2x<T>& left, const Vector2x<T>& right)
 	{
 		left.x /= right.x;

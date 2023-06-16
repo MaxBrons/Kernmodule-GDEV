@@ -18,15 +18,15 @@ namespace KMCore::Core
 
 		inline void AddForce(const Vector2 force)
 		{
-			m_Force = force;
+			m_Force = m_Mass * force; //Force = mass * acceleration
 		}
 
 		void OnUpdate() override
 		{
 			float dt = (1.0f / 60.0f);
-			m_Acceleration.x = (m_Force.x * m_Friction.x) / m_Mass;
-			m_Acceleration.y = (m_Force.y  * m_Friction.y) / m_Mass;
-			m_Velocity += m_Acceleration * dt;
+			m_Acceleration.x = (m_Force.x * m_Friction.x) / 1.0f; //Acceration (m/s)² = change in velocity / time
+			m_Acceleration.y = (m_Force.y * m_Friction.y) / 1.0f; //Acceration (m/s)² = change in velocity / time
+			m_Velocity += (m_Acceleration * dt) / 1.0f; //Velocity = change in position / time
 			m_Velocity *= m_Drag;
 
 			if (KMMathf::abs(m_Velocity.x) < 0.01f && KMMathf::abs(m_Velocity.y) < 0.01f)
